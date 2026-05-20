@@ -1,34 +1,66 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton, QVBoxLayout, QWidget
 
-class App(QWidget):
+class Calculator(QWidget):
     def __init__(self):
         super().__init__()
         
-        self.setWindowTitle("Dashboard")
-        self.resize(500, 300)
+        self.setWindowTitle("Calcolatrice")
+        self.setFixedSize(300, 400)
         
-        self.label = QLabel("Stato: fermo")
-        self.start_btn = QPushButton("Avvia")
-        self.stop_btn = QPushButton("Stop")
+        self.expression = ""
         
-        self.start_btn.clicked.connect(self.start)
-        self.stop_btn.clicked.connect(self.stop)
+        #Display
+        self.display = QLineEdit()
+        self.display.setReadOnly(True)
+        self.display.setStyleSheet("font-size: 24px; padding: 10px;")
         
-        layout = QVBoxLayout()
-        layout.addWidget(self.label)
-        layout.addWidget(self.start_btn)
-        layout.addWidget(self.stop_btn)
+        #Layout Principale
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(self.display)
         
-        self.setLayout(layout)
+        grid = QGridLayout()
         
-    def start(self):
-        self.label.setText("Stato: in esecuzione")
+        buttons = [ 
+            "7", "8", "9", "/", 
+            "4", "5", "6", "*",
+            "1", "2", "3", "-",
+            "C", "0", "=", "+"
+        ]
         
-    def stop(self):
-        self.label.setText("Stato: fermo")
+        positions = [(i, j) for i in range(4) for j in range(4)]
         
+        for position, button_text in zip(positions, buttons):
+            button = QPushButton(button_text)
+            button.setSyleSheet("font-size: 18px; padding: 10px;")
+            
+            button.clicked.connect(lambda _, text=button_text: self.on_click(text))
+            grid.addWidget(button, *position)
+            
+        main_layout.addLayout(grid)
+        self.setLayout(main_layout)
+        
+        def on_click(self, text):
+            if text == "C":
+                self.expression = ""
+                self.display.setText("")
+                return
+            
+            if text == "=":
+                try:
+                    result = eval(self.expression)
+                    self.display.setText(str(result))
+                    self.expression = str(result)
+                except:
+                    self.display.setText("Errore")
+                    self.expression = ""
+                return
+                
+            self.expression += text
+            self.display.setText(self.expression)
+            
 app = QApplication(sys.argv)
-window = App()
+window = Calculator()
 window.show()
 app.exec()
+            
