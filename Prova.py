@@ -6,7 +6,7 @@ class Calculator(QWidget):
         super().__init__()
 
         self.setWindowTitle("Calcolatrice PyQt6")
-        self.setFixedSize(300, 400)
+        self.setFixedSize(350, 300)
 
         self.expression = ""
 
