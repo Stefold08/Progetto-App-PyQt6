@@ -83,11 +83,11 @@ class Sudoku(QWidget):
     def valid_group(self, numbers):
         
         values = [n for n in numbers if n != 0]
-        
+        000000000
         return len(values) == len(set(values))
     
     def check_board(self):
-        bouard = self.get_board()
+        board = self.get_board()
         
         for row in board:
             if not self.valid_group(row):
@@ -97,3 +97,38 @@ class Sudoku(QWidget):
         for col in range(9):
             
             values = []
+            
+            for row in range(9):
+                values.append(board[row][col])
+                
+            if not self.valid(values):
+                self.message.setText("Errore nelle colonne")
+                return
+            
+        for block_row in range(0, 9, 3):
+            for block_col in range(0, 9, 3):
+                
+                block = []
+                
+                for r in range(3):
+                    for c in range(3):
+                        block.append(board[block_row + r][block_col + c])
+                        
+                if not self.valid_group(block):
+                    self.message.setText("Erorre nel blocco 3x3")
+                    return 
+                
+        self.message.setText("Sudoku valido")
+        
+    def clear_board(self):
+        for row in self.cells:
+            for cell in row:
+                cell.clear()
+                
+        self.message.setText("")
+        
+        
+app = QApplication(sys.argv)
+
+window = Sudoku()
+window.show()
