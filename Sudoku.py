@@ -30,4 +30,24 @@ class Sudoku(QWidget):
                 cell.setAlignment(Qt.AlignmentFlag.AlignCenter)
                 cell.setMaxLength(1)
                 
+                cell.setStyleSheet("""font-size:22px; background:#ffffff;""")
+                
+                cell.textChanged.connect(lambda text, c=cell: self.validate_input(c))
+                
+                grid.addWidget(cell, row, col)
+                
+                row_cells.append(cell)
+                
+            self.cells.append(row_cells)
+            
+        main_layout.addLayout(grid)
+        
+        self.message = QLabel("")
+        self.message.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        
+        main_layout.addWidget(self.message)
+        
+        check_btn = QPushButton("Controlla")
+        check_btn = QPushButton("Pulisci")
+        
                 

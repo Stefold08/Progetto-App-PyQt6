@@ -48,7 +48,7 @@ class Sudoku(QWidget):
                     background:#ffffff;
                 """)
 
-                cell.textChanged.connect(
+                cell.textChanged.connect(0
                     lambda text, c=cell: self.validate_input(c)
                 )
 
