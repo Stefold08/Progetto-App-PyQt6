@@ -101,7 +101,7 @@ class Sudoku(QWidget):
             for row in range(9):
                 values.append(board[row][col])
                 
-            if not self.valid(values):
+            if not self.valid_group(values):
                 self.message.setText("Errore nelle colonne")
                 return
             
@@ -132,3 +132,5 @@ app = QApplication(sys.argv)
 
 window = Sudoku()
 window.show()
+
+app.exec()
