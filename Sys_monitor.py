@@ -77,4 +77,16 @@ class DashboardPage(QWidget):
         
         self.update_stats()
         
+    def update_stats(self):
+        cpu = psutil.cpu_percent()
+        ram = psutil.virtual_memory().percent
+        processes = len(psutil.pids())
+        
+        self.cpu_card.set_value(f"{cpu}%")
+        self.ram_card.set_value(f"{ram}%")
+        self.process_card.set_value(str(processes))
+        
+        self.cpu_bar.setValue(int(cpu))
+        self.ram_bar.setValue(int(ram))
+        
         
