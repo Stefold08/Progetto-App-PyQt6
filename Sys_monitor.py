@@ -90,3 +90,20 @@ class DashboardPage(QWidget):
         self.ram_bar.setValue(int(ram))
         
         
+class ProcessesPage(QWidget):
+    def __int__(self):
+        super().__init__()
+        
+        layout = QVBoxLayout(self)
+        
+        title = QLabel("Processi")
+        title.setObjectName("PageTitle")
+        
+        layout.addWidget(title)
+        
+        self.table = QTableWidget()
+        
+        self.table = QTableWidget()
+        
+        self.table.setColumnCount(4)
+        
