@@ -1,7 +1,7 @@
 import sys 
 import psutil
 
-from PyQt6.QtCore import Qt, QTime
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,QStackedWidget, QTableWidget, QTableWidgetItem, QFrame, QProgressBar
 
@@ -32,4 +32,49 @@ class MetricCard(QFrame):
         
     def set_value(self, text):
         self.value.setText(text)
+        
+class DashboardPage(QWidget):
+    def __init__(self):
+        super().__init__()
+        
+        layout = QVBoxLayout(self)
+        layout.setSpacing(16)
+        
+        title = QLabel("Dashboard")
+        title.setObjectName("PageTitle")
+        
+        layout.addWidget(title)
+        
+        cards_layout = QHBoxLayout()
+        
+        self.cpu_card = MetricCard("CPU", "0%")
+        self.ram_card = MetricCard("RAM", "0%")
+        self.process_card = MetricCard("Processi", "0")
+        
+        cards_layout.addWidget(self.cpu_card)
+        cards_layout.addWidget(self.ram_card)
+        cards_layout.addWidget(self.process_card)
+        
+        layout.addLayout(cards_layout)
+        
+        self.cpu_bar = QProgressBar()
+        self.cpu_bar.setValue(0)
+        
+        self.ram_bar = QProgressBar()
+        self.ram_bar.setValue(0)
+        
+        layout.addWidget(QLabel("CPU Usage"))
+        layout.addWidget(self.cpu_bar)
+        
+        layout.addWidget(QLabel("RAM Usage"))
+        layout.addWidget(self.ram_bar)
+        
+        layout.addStretch()
+        
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update_stats)
+        self.timer.start(1000)
+        
+        self.update_stats()
+        
         
