@@ -10,4 +10,4 @@ hi my name is Daniele i'am from italy, i'm tryng to create someting innovative, 
 
 ![Immaine del Sudoku](Sudoku.png)
 
-![Immagine del System Monitor](Task Manager.png)
+![Immagine del System Monitor](sys_monitor.png)
