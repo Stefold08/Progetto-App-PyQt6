@@ -8,6 +8,9 @@ hi my name is Daniele i'am from italy, i'm tryng to create someting innovative, 
 
 - the fourth is a system monitor app, and you can kill processes too, for now it have a basic graphic, in the future i whant to upgrade the UI, and the function to add more, for now is preaty basic, you can modify too 
 
+An Exemle of the Sudoku program:
 ![Immaine del Sudoku](Sudoku.png)
-
+An Exemple of the sys_monitor program:
 ![Immagine del System Monitor](sys_monitor.png)
+
+this two are the one that i am personaly proud to create, i whant to upgrade them in the next days/weeks.
