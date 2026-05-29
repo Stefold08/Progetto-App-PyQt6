@@ -8,6 +8,6 @@ hi my name is Daniele i'am from italy, i'm tryng to create someting innovative, 
 
 - the fourth is a system monitor app, and you can kill processes too, for now it have a basic graphic, in the future i whant to upgrade the UI, and the function to add more, for now is preaty basic, you can modify too 
 
-![Immaine del Sudoku](/home/daniele/Documents/visual studio/python/Progect app/Sudoku.png)
+![Immaine del Sudoku](Sudoku.png)
 
-![Immagine del System Monitor](/home/daniele/Documents/visual studio/python/Progect app/Task Manager.png)
+![Immagine del System Monitor](Task Manager.png)
