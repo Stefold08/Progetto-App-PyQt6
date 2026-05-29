@@ -7,3 +7,7 @@ hi my name is Daniele i'am from italy, i'm tryng to create someting innovative, 
 - the third one is, a sperimental app, whit more than one page, and is just to learn how to create some pages.
 
 - the fourth is a system monitor app, and you can kill processes too, for now it have a basic graphic, in the future i whant to upgrade the UI, and the function to add more, for now is preaty basic, you can modify too 
+
+/home/daniele/Documents/visual studio/python/Progect app/Sudoku.png
+
+/home/daniele/Documents/visual studio/python/Progect app/Task Manager.png
